@@ -16,8 +16,8 @@ import {createTask} from '../services/taskService';
 export default defineComponent({
     data(){
         return {
-            task: {} as Task
-        }
+            task: {} as Task,
+        };
     },
     methods: {
         async saveTask (){
