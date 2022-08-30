@@ -34,18 +34,16 @@ export const createTask = async (req: Request, res: Response) => {
 export const removeTask = async (req: Request, res: Response) => {
     try {
         const taskRemove = await Task.findByIdAndDelete(req.params.id);
-        if(!taskRemove){
-            res.json({message: "task not found"})    
-        }
         res.json(taskRemove);
     } catch (error) {
         return res.json(error)
     }
 }
 
-export const updatedTask = (req: Request, res: Response) => {
+export const updatedTask = async (req: Request, res: Response) => {
     try {
-        res.json("Updated tasks");
+        const taskUpdated = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(taskUpdated);
     } catch (error) {
         return res.json(error)
     }
